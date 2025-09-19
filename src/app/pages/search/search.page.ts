@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
+import { DataService } from '../../services/data';
+
 
 @Component({
   selector: 'app-search',
@@ -9,16 +11,28 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [IonicModule, CommonModule],
 })
-export class SearchPage {
+export class SearchPage implements OnInit {
   query = '';
-  results: string[] = [];
+  albums: any[] = [];
+  results: any[] = [];
+
+  constructor(private dataService: DataService) {}
+
+  ngOnInit() {
+    // carga todos los álbumes al iniciar
+    this.dataService.getAlbumes().subscribe((res: any) => {
+      this.albums = res;
+      this.results = res; // inicializamos resultados con todos
+    });
+  }
 
   onSearchChange(ev: any) {
     this.query = ev?.detail?.value ?? '';
-    const base = ['Album A', 'Album B', 'Album C', 'Another Album'];
     this.results = this.query
-      ? base.filter(x => x.toLowerCase().includes(this.query.toLowerCase()))
-      : [];
+      ? this.albums.filter(album =>
+          album.title.toLowerCase().includes(this.query.toLowerCase())
+        )
+      : this.albums;
   }
 }
 

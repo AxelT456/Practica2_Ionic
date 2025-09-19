@@ -11,7 +11,9 @@ export class DataService {
   getUsuarios() {
     return this.http.get('https://jsonplaceholder.typicode.com/users');
   }
-
+  getAlbumes() {
+  return this.http.get('https://jsonplaceholder.typicode.com/albums');
+  }
   getMenuOpts(): Observable<Componente[]> {
     return this.http.get<Componente[]>('/assets/data/menu-opts.json'); // <- /assets/data/...
   }
