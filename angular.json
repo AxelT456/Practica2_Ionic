@@ -20,33 +20,21 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              {
-                "glob": "**/*",
-                "input": "src/assets",
-                "output": "assets"
-              },
-              {
-                "glob": "**/*.svg",
-                "input": "node_modules/ionicons/dist/ionicons/svg",
-                "output": "./svg"
-              }
+              { "glob": "**/*", "input": "src/assets", "output": "assets" },
+              { "glob": "**/*.svg", "input": "node_modules/ionicons/dist/ionicons/svg", "output": "./svg" }
             ],
-            "styles": ["src/global.scss", "src/theme/variables.scss", "node_modules/animate.css/animate.min.css"],
+            "styles": [
+              "src/global.scss",
+              "src/theme/variables.scss",
+              "node_modules/animate.css/animate.min.css"
+            ],
             "scripts": []
           },
           "configurations": {
             "production": {
               "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
-                }
+                { "type": "initial", "maximumWarning": "2mb", "maximumError": "5mb" },
+                { "type": "anyComponentStyle", "maximumWarning": "2kb", "maximumError": "4kb" }
               ],
               "fileReplacements": [
                 {
@@ -64,32 +52,22 @@
               "sourceMap": true,
               "namedChunks": true
             },
-            "ci": {
-              "progress": false
-            }
+            "ci": { "progress": false }
           },
           "defaultConfiguration": "production"
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
-            "production": {
-              "buildTarget": "app:build:production"
-            },
-            "development": {
-              "buildTarget": "app:build:development"
-            },
-            "ci": {
-              "progress": false
-            }
+            "production": { "buildTarget": "app:build:production" },
+            "development": { "buildTarget": "app:build:development" },
+            "ci": { "progress": false }
           },
           "defaultConfiguration": "development"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "buildTarget": "app:build"
-          }
+          "options": { "buildTarget": "app:build" }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
@@ -100,51 +78,34 @@
             "karmaConfig": "karma.conf.js",
             "inlineStyleLanguage": "scss",
             "assets": [
-              {
-                "glob": "**/*",
-                "input": "src/assets",
-                "output": "assets"
-              },
-              {
-                "glob": "**/*.svg",
-                "input": "node_modules/ionicons/dist/ionicons/svg",
-                "output": "./svg"
-              }
+              { "glob": "**/*", "input": "src/assets", "output": "assets" },
+              { "glob": "**/*.svg", "input": "node_modules/ionicons/dist/ionicons/svg", "output": "./svg" }
             ],
-            "styles": ["src/global.scss", "src/theme/variables.scss"],
+            "styles": [
+              "src/global.scss",
+              "src/theme/variables.scss"
+            ],
             "scripts": []
           },
           "configurations": {
-            "ci": {
-              "progress": false,
-              "watch": false
-            }
+            "ci": { "progress": false, "watch": false }
           }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": [
-              "src/**/*.ts",
-              "src/**/*.html"
-            ]
+            "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
           }
         }
       }
     }
   },
   "cli": {
-    "schematicCollections": [
-      "@ionic/angular-toolkit"
-    ],
+    "schematicCollections": ["@ionic/angular-toolkit"],
     "analytics": "5a9d4a25-193e-4b08-ab22-da461d8959c1"
   },
   "schematics": {
-    "@ionic/angular-toolkit:component": {
-      "styleext": "scss"
-    },
-    "@ionic/angular-toolkit:page": {
-      "styleext": "scss"
-    }
+    "@ionic/angular-toolkit:component": { "styleext": "scss" },
+    "@ionic/angular-toolkit:page": { "styleext": "scss" }
   }
 }
